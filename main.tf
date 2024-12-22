@@ -24,6 +24,7 @@ module "vpc" {
   project_id   = var.project_id
   network_name = var.network_name
   subnets      = var.subnets
+  secondary_ranges = var.secondary_ranges
 }
 
 module "gke" {
@@ -32,7 +33,7 @@ module "gke" {
   project_id       = var.project_id
   zones            = [var.zone]
   network          = module.vpc.network_name
-  subnetwork       = module.vpc.subnets["${var.region}/node-pool-subnet"].name
+  subnetwork       = values(module.vpc.subnets)[0].name //For now, only one subnet is in the input var, and it will only read the one and only subnet var as the subnet to deploy the gke cluster to
   cluster_name     = var.cluster_name
   ip_range_pods    = var.ip_range_pods
   ip_range_services = var.ip_range_services 
