@@ -51,3 +51,15 @@ variable "node_pools" {
     auto_upgrade  = bool
   }))
 }
+
+variable "remove_default_node_pool" {
+  description = "Whether to remove the default node pool created by GKE"
+  type        = bool
+  default     = false
+}
+
+variable "grant_registry_access" {
+  type        = bool
+  description = "Grants created cluster-specific service account storage.objectViewer and artifactregistry.reader roles."
+  default     = false
+}

@@ -50,6 +50,7 @@ variable "node_pools" {
     disk_size_gb  = number
     auto_repair   = bool
     auto_upgrade  = bool
+    
   }))
 }
 
@@ -61,4 +62,16 @@ variable "ip_range_pods" {
 variable "ip_range_services" {
   description = "IP range for Kubernetes Services"
   type        = string
+}
+
+variable "remove_default_node_pool" {
+  description = "Whether to remove the default node pool created by GKE"
+  type        = bool
+  default     = true
+}
+
+variable "grant_registry_access" {
+  type        = bool
+  description = "Grants created cluster-specific service account storage.objectViewer and artifactregistry.reader roles."
+  default     = false
 }
