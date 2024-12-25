@@ -49,6 +49,7 @@ variable "node_pools" {
     disk_size_gb  = number
     auto_repair   = bool
     auto_upgrade  = bool
+    cpu_cfs_quota = bool
   }))
 }
 
