@@ -2,38 +2,38 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.opentofu.org/hashicorp/google" {
-  version     = "4.85.0"
-  constraints = "~> 4.0"
+  version     = "6.14.1"
+  constraints = ">= 3.33.0, >= 3.83.0, >= 4.25.0, >= 4.64.0, >= 6.11.0, < 7.0.0"
   hashes = [
-    "h1:Nir828MNUzh275whox2RDdD9w/IpmVEIIBFJPHyaScg=",
-    "zh:081fe514f23d4274239dde0a349270c9d544ebdd01d3ee32902bc01aed4bcbd2",
-    "zh:33c921b3e151f942b2908ac0e2453619c03997c0cdac72f0d98ce9e7ef9d71c4",
-    "zh:388d4f9d402977d9aa434d08bfd3fd22143a8a655a85dfa7a67a66349aef1de8",
-    "zh:5da4e83dd125470c176bcba6e24a513157d3143082212d16266ef0ede4087f6c",
-    "zh:5fc50f071dc2f721ab05890f7145a75fa227c9979da0419b7da634f1d7302092",
-    "zh:b0d2ed9033f378333894e25576b5874d0224ceb7a090d5d0631e59ae336cb52d",
-    "zh:ca61fd33bb775461e73c25094c124f79cad797704c4d09df002f21a853b15ec3",
-    "zh:d4ff3ebeac654728f433dc17468229d4210205af674374c035758186df903274",
-    "zh:ebaa4f1787143dbae042d33f6598c724b4f2afeb8bdebcbf78cb277db49f22c1",
-    "zh:feaa5db9e7a90f3907dc8e8e8737ad2b1ff8568934fedd9b5fd947c12023bd7b",
+    "h1:7GlNd8u4F4nts64We/x4yUWZ9Oe7iGc+0vvMMeQIgeM=",
+    "zh:03bee255c6d2f3164205d19d0c2a4131a620b581fb39a12ae809fe1734818dfe",
+    "zh:442f732f3650e59b328d4e0ba42fd96c6badfc4d43a55bb909d721fe45248b54",
+    "zh:50c1726822905915ee318a03de69017a22ca9294bc692d7f34bf0f60ffdde919",
+    "zh:8b609b1b6b8cf9e24af15c61206f2e0f104a13ac52db3d4520721477c2487926",
+    "zh:8e193095770bda41a1da35f83a3d6cecd5c321e065a2e325eea365669d34117b",
+    "zh:dbd939bf4632620166b9fc39961c37dfb2d3581b1461efdc3aa61692bdc26053",
+    "zh:e6ad386aa479af3076d8f2112682458f5ad4fc561a8750083337d875c38dc166",
+    "zh:f2df91fac48c1d2de97a24f9c3de20223ee7d7134e921c79f6a7c0ff2afd67fe",
+    "zh:fafc79e55b90ca5c3f8d95c641e5f3e77a97a7a93d70a713dcecb6a18c0ab2a9",
+    "zh:fc4f1321277287462363552945e97374d7529493ec7bfc3f7424309dcd41427e",
   ]
 }
 
 provider "registry.opentofu.org/hashicorp/google-beta" {
-  version     = "4.85.0"
-  constraints = ">= 3.45.0, < 5.0.0"
+  version     = "6.14.1"
+  constraints = ">= 4.64.0, >= 6.11.0, >= 6.13.0, < 7.0.0"
   hashes = [
-    "h1:+V1Y3rM5EGmx6ycSH4ZQ1Ah6HshwINdxwmF/76jXKrw=",
-    "zh:06bddf3f7b192999c6586b538e963c6bc53f64cd5abe3c4b270c19759f41c659",
-    "zh:08b06299f42d3c95e159ee8f607345faae1f06007c9e0721525b21b184ec5512",
-    "zh:20df6259ad9d6d4cca7b0f62cf1f712cdf54332a71b4e4baf2202d6622e31199",
-    "zh:470b526e869a41d278386e6ca50a3fc1f89a089ff0a42cc877a0fcd49aee2854",
-    "zh:53ad0c02b8fcdebc16e1c7bd49836c07c44d7d168a266af4ec799328680d1e9d",
-    "zh:56a45a46c1b7137c44060eb23155e5cd2202ffc738a6b4a263b566148006f2f8",
-    "zh:696ff20d946e76ba0ae1503e496c547f30d9ee105001a74270f4994cf7e596ce",
-    "zh:75e46edb592d875fc61e3c89bfb26e3e5f776de22a077c3392e4f16d6d3c12ed",
-    "zh:c364da73bf587ba3e5c3f858cc40df15e9298ae3404829a2c0a9c3b723b81927",
-    "zh:eed5fc396555440bef9b0d87ef28b31907dd1c9d204df7549890b5da4f08f54f",
+    "h1:UG7ISStJhS7m/sS2sYQtDH6H9fgsy70ezToQnXh1URk=",
+    "zh:14cf2cd863cd47924731598457bb6832c84bef031093087684635efe98b9057e",
+    "zh:23ac785ffdecbaffdcb714138d9aaacf30fdae9bef45cddabc8b9db6f18041cd",
+    "zh:25ee04b6a3235e7fde1eeba41fdd49c1eaf303e78ffb7949d68084f768abf43d",
+    "zh:360ad082f0e578ce661537f1aca33e4064b181c2605cee52a24723c181c2f4dd",
+    "zh:3e85fa49311310302dd2e5722286273ce57d860fa1696ecbff3f458dae96f67b",
+    "zh:5bd8dfeb3a38219f8800ee86e00384f91b7ea303bbda6580494360b5cc3ad64b",
+    "zh:8ce1b70a614f263569e0c3c2f592f866dc6eee11003feb5f43499889ccbffa11",
+    "zh:a32271c00aae273403b36c3b5d0f2e9fb594df5ac94b17d33ea361c978f8557e",
+    "zh:e3a47735624ad8256f93b8ece368e9b00f41be23963479b638208c8d4758a2aa",
+    "zh:f5742561b7e70e1809460827d8f042784d606b37f44251905f14ffd06e833e7e",
   ]
 }
 
@@ -56,7 +56,8 @@ provider "registry.opentofu.org/hashicorp/kubernetes" {
 }
 
 provider "registry.opentofu.org/hashicorp/random" {
-  version = "3.6.3"
+  version     = "3.6.3"
+  constraints = ">= 2.1.0"
   hashes = [
     "h1:cnft2k5mwWkXDNKZdQ7KZ7Jk8aYmHToTgtNDbcYrv8I=",
     "zh:1bfd2e54b4eee8c761a40b6d99d45880b3a71abc18a9a7a5319204da9c8363b2",

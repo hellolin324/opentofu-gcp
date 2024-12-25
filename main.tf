@@ -2,15 +2,30 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "~> 4.0"
+      version = ">= 6.11.0, < 7.0.0"
+    }
+    google-beta = {
+      source  = "hashicorp/google-beta"
+      version = ">= 6.11.0, < 7.0.0"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~> 2.10"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = ">= 2.1.0"
     }
   }
 }
+
+
 
 provider "google" {
   credentials = file("C:\\Users\\hello\\Documents\\repos\\opentofu-gcp\\opentofu-key.json")
   project     = var.project_id
   region      = var.region
+
 }
 
 provider "google-beta" {
@@ -40,5 +55,6 @@ module "gke" {
   node_pools       = var.node_pools
   remove_default_node_pool = var.remove_default_node_pool
   grant_registry_access = var.grant_registry_access
+  
 }
 

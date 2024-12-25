@@ -1,6 +1,5 @@
 module "gke" {
-  source           = "terraform-google-modules/kubernetes-engine/google"
-  version          = "~> 25.0"
+  source = "terraform-google-modules/kubernetes-engine/google"
   region = var.region
   project_id       = var.project_id
   name             = var.cluster_name
@@ -13,5 +12,7 @@ module "gke" {
   remove_default_node_pool = var.remove_default_node_pool
   grant_registry_access = var.grant_registry_access
 }
+
+
 
 
