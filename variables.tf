@@ -3,6 +3,11 @@ variable "project_id" {
   type        = string
 }
 
+variable "repo_location" {
+  description = "The location of this Artifact Registry Repo"
+  type        = string
+}
+
 variable "region" {
   description = "GCP Region"
   type        = string
@@ -75,3 +80,4 @@ variable "grant_registry_access" {
   description = "Grants created cluster-specific service account storage.objectViewer and artifactregistry.reader roles."
   default     = false
 }
+

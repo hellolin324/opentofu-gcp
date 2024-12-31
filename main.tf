@@ -58,3 +58,8 @@ module "gke" {
   
 }
 
+module "artifact_registry" {
+  source  = "./modules/GCP-AR"
+  project_id    = var.project_id
+  location      = var.repo_location
+}

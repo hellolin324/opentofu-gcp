@@ -8,4 +8,7 @@ output "gke_cluster_name" {
   value       = module.gke.cluster_name
 }
 
-
+output "artifact_id" {
+  description = "An identifier for the docker repo"
+  value       = module.artifact_registry.artifact_id
+}
