@@ -12,3 +12,7 @@ output "artifact_id" {
   description = "An identifier for the docker repo"
   value       = module.artifact_registry.artifact_id
 }
+
+output "github_actions_sa_email" {
+  value = module.github_actions_service_account.email
+}

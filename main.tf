@@ -63,3 +63,22 @@ module "artifact_registry" {
   project_id    = var.project_id
   location      = var.repo_location
 }
+
+module "github_actions_service_account" {
+  source      = "./modules/SA"
+
+  project_id   = var.project_id
+  account_id   = "github-actions-sa"
+  display_name = "GitHub Actions Service Account"
+
+  bindings = {
+    "roles/viewer" = [
+      "serviceAccount:${module.github_actions_service_account.email}",
+    ]
+  }
+
+  location   = "us-east1"               
+  repository = "docker-image-repo"              
+}
+
+

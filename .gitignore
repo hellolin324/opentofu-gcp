@@ -39,3 +39,4 @@ terraform.rc
 opentofu-key.json
 gcp-key.json
 tfplan
+gcp_ga_key.txt
