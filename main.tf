@@ -81,4 +81,31 @@ module "github_actions_service_account" {
   repository = "docker-image-repo"              
 }
 
+module "github_oidc_robot_shop" {
+  source      = "./modules/gh-oidc"
+
+  project_id  = var.project_id
+  pool_id     = "github-actions-pool"     # Hardcoded for this repo
+  provider_id = "github-actions-provider" # Hardcoded for this repo
+  
+  //Explicit def of attribute_mapping and attribute_condition required here due to attribute.repository being used in sa_mapping, manually def the dots between gcp wif provider with github's oicd supported claims at https://token.actions.githubusercontent.com/.well-known/openid-configuration
+  attribute_mapping = {
+  "google.subject" = "assertion.sub"
+  "attribute.repository" = "assertion.repository"
+  "attribute.actor" = "assertion.actor"
+  "attribute.workflow" = "assertion.workflow"
+}
+
+  attribute_condition = "attribute.repository == 'hellolin324/robot-shop'"
+
+  sa_mapping = {
+    "${module.github_actions_service_account.email}" = {
+      sa_name   = "${module.github_actions_service_account.name}"
+      attribute = "attribute.repository/hellolin324/robot-shop"
+    }
+  }
+
+  depends_on = [module.github_actions_service_account]
+}
+
 

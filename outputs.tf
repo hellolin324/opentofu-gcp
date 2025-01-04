@@ -16,3 +16,13 @@ output "artifact_id" {
 output "github_actions_sa_email" {
   value = module.github_actions_service_account.email
 }
+
+output "pool_name" {
+  description = "The name of the Workload Identity Pool"
+  value       = module.github_oidc_robot_shop.pool_name
+}
+
+output "provider_name" {
+  description = "The name of the Workload Identity Provider"
+  value       = module.github_oidc_robot_shop.provider_name
+}
