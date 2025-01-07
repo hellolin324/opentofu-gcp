@@ -10,7 +10,7 @@ terraform {
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = "~> 2.10"
+      version = "~> 2.35"
     }
     random = {
       source  = "hashicorp/random"
@@ -18,8 +18,6 @@ terraform {
     }
   }
 }
-
-
 
 provider "google" {
   credentials = file("C:\\Users\\hello\\Documents\\repos\\opentofu-gcp\\opentofu-key.json")
@@ -32,6 +30,19 @@ provider "google-beta" {
   project = var.project_id
   region  = var.region
   credentials = file("C:\\Users\\hello\\Documents\\repos\\opentofu-gcp\\opentofu-key.json")
+}
+
+data "google_container_cluster" "gke_cluster" {
+  name     = module.gke.cluster_name
+  location = module.gke.location
+}
+
+data "google_client_config" "default" {}
+
+provider "kubernetes" {
+  host                   = data.google_container_cluster.gke_cluster.endpoint
+  cluster_ca_certificate = base64decode(data.google_container_cluster.gke_cluster.master_auth[0].cluster_ca_certificate)
+  token                  = data.google_client_config.default.access_token
 }
 
 module "vpc" {
@@ -55,7 +66,15 @@ module "gke" {
   node_pools       = var.node_pools
   remove_default_node_pool = var.remove_default_node_pool
   grant_registry_access = var.grant_registry_access
-  
+}
+
+module "gke_cluster_workload_identity" {
+  source               = "./modules/wif-gke"
+  project_id           = var.project_id
+  name                 = var.k8s_service_account_name
+  namespace            = var.k8s_namespace
+  roles                = var.k8s_roles
+  automount_service_account_token = var.automount_service_account_token
 }
 
 module "artifact_registry" {
