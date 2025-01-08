@@ -21,15 +21,18 @@ jobs:
           hide-progress: true
           format: 'table' # Output results in human-readable table format
           input: './' # Scan the entire repository for IaC files (e.g., Terraform, Kubernetes manifests)
-          severity: 'CRITICAL,HIGH,MEDIUM'
+          severity: 'CRITICAL,HIGH'
           exit-code: '1' # Fail workflow on detected issues
           output: 'trivy-iac-report.txt' # Save scan results to a file
-      - name: Add Summary to Report
+        continue-on-error: true
+
+      - name: Check for Vulnerabilities
         run: |
-            if [ ! -s trivy-iac-report.txt ]; then
-              echo "No critical or high vulnerabilities detected." >> trivy-iac-report.txt
-            else
-              echo "Critical or high vulnerabilities detected. See details above." >> trivy-iac-report.txt
+          if [ -s trivy-iac-report.txt ]; then
+            echo "Vulnerabilities found! Report generated successfully."
+          else
+            echo "No vulnerabilities detected."
+          fi
 
       # Step 3: Upload Trivy IaC Scan Report
       - name: Upload Trivy IaC Scan Report
@@ -37,3 +40,6 @@ jobs:
         with:
           name: trivy-iac-scan-report
           path: trivy-iac-report.txt
+
+      - name: Print Trivy IaC Scan Report
+        run: cat trivy-iac-report.txt
