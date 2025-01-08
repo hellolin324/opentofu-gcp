@@ -15,7 +15,7 @@ jobs:
 
       # Step 2: Run Trivy vulnerability scanner in IaC mode
       - name: Run Trivy IaC Scanner
-        uses: aquasecurity/trivy-action@v0.29.0
+        uses: aquasecurity/trivy-action@0.29.0
         with:
           scan-type: 'config' # Scans for misconfigurations
           hide-progress: true
