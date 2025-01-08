@@ -1,0 +1,33 @@
+name: Trivy IaC Scan Workflow
+
+on:
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+jobs:
+  trivy-iac-scan:
+    name: Run Trivy IaC Scanner
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout Code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Run Trivy vulnerability scanner in IaC mode
+      - name: Run Trivy IaC Scanner
+        uses: aquasecurity/trivy-action@v0.29.0
+        with:
+          scan-type: 'config' # Scans for misconfigurations
+          hide-progress: true
+          format: 'table' # Output results in human-readable table format
+          input: './' # Scan the entire repository for IaC files (e.g., Terraform, Kubernetes manifests)
+          severity: 'CRITICAL' # Filter for high and critical issues only
+          exit-code: '1' # Fail workflow on detected issues
+          output: 'trivy-iac-report.txt' # Save scan results to a file
+
+      # Step 3: Upload Trivy IaC Scan Report
+      - name: Upload Trivy IaC Scan Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-iac-scan-report
+          path: trivy-iac-report.txt
